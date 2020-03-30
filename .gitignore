@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+.the-plan.txt
+.Plan-of-Structure.pptx
