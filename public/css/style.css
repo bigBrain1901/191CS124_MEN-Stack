@@ -1,0 +1,348 @@
+body {
+    font-family:'Calibri';
+}
+
+.navbar {
+    margin-left: -10%;
+    margin-top: -1%;
+    width: 107.3%;
+    box-shadow: 0px 2px 20px 0px grey;
+    background-color: rgb(250, 250, 250);
+    padding: 1.5%;
+}
+
+.navbar-home-heading {
+    font-family: "Adobe Garamond Pro", Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+    text-align: center;
+    margin-left: 10%;
+    font-size: 40px;
+    font-weight: 600;
+    padding-top: 0.7%;
+}
+
+.navbar-heading {
+    display: inline-block;
+    font-family: "Adobe Garamond Pro", Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+    text-align: left;
+    font-size: xx-large;
+    margin-left: 11%;
+    font-weight: 600;
+    padding-top: 0.6%;
+}
+
+.navbar-links {
+    float: right;
+    text-align: right;
+    font-size: x-large;
+    margin-right: 2%;
+    font-weight: 500;
+    padding-top: 0.9%;
+}
+
+.navbar-link {
+    color: rgb(127,127,127);
+    padding-left: 8px;
+    padding-right: 8px;
+    text-decoration: none;
+}
+
+.col3 {
+    margin-left: 10%;
+    align-content: center;
+    width: 80%;
+}
+
+.item-card-login {
+    display: inline-block;
+    position: absolute;
+    background-color: rgb(250, 250, 250);
+    border: 2.5px solid rgb(46,117,182);
+    border-radius: 10px;
+    padding: 2%;
+    width: 13%;
+    margin-left: 2%;
+    min-height: 500px;
+}
+
+.item-card {
+    background-color: rgb(250, 250, 250);
+    border: 2.5px solid rgb(46,117,182);
+    border-radius: 10px;
+    padding: 2%;
+    width: 20%;
+    margin: 1%;
+    display: inline-block;
+}
+
+.row:first-child {
+    margin-left: 11%;
+}
+
+.item-card-heading {
+    font-weight: 500;
+    font-size: 1.7rem;
+    margin-bottom: 20px;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.item-card-image {
+    border: 2.5px solid rgb(46,117,182);
+    border-radius: 5px;
+    margin-bottom: -50px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+.item-card-image:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.item-card-button {
+    border-radius: 40px;
+    background-color: rgb(46,117,182);
+    margin-bottom: 50px;
+    outline: none;
+    padding: 20px;
+    width: 101.5%;
+    text-align: left;
+    color: white;
+    border: none;
+    font-weight: 500;
+    font-size: large;
+}
+
+.item-card-button-logo {
+    display: block;
+    text-align: right;
+    margin-left: 85%;
+    font-weight: 500;
+    font-size: xx-large;
+    color: white;
+    margin-top: -100px;
+    margin-bottom: 50px;
+    z-index: 20;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.item-card-text {
+    text-align: justify;
+    margin-top: -20px;
+    padding: 5px;
+    font-size: large;
+}
+
+.item-card-link {
+    display: block;
+    text-align: left;
+    padding: 5px;
+    margin-top: 5px;
+    font-size: large;
+    font-weight: 600;
+    color: rgb(46,117,182);
+}
+
+.item-card-link:hover, .item-card-link:visited {
+    color: rgb(22, 84, 141);
+}
+
+.form-label {
+    font-size: x-large;
+    padding-left: 5px;
+    font-weight: 500;
+}
+
+.form-text {
+    font-size: large;
+    font-weight: 100;
+    padding: 10px;
+    width: 95%;
+    border: 2px solid rgb(46,117,182);
+    border-radius: 8px;
+    outline: none;
+    margin-top: 5px;
+}
+
+.form-textarea {
+    font-size: large;
+    padding: 10px;
+    width: 95%;
+    border-radius: 20px;
+    border: 2px solid rgb(46,117,182);
+    outline: none;
+    margin-top: 5px;
+    font-family:'Calibri';
+}
+
+.form-text:hover, .form-text:active, .form-text:focus, .form-textarea:hover, .form-textarea:active, .form-textarea:focus {
+    border: 3px solid rgb(22, 84, 141);
+    padding: 9px;
+    outline: none;
+}
+
+.form-button {
+    border-radius: 20px;
+    vertical-align: top;
+    background-color: rgb(46,117,182);
+    outline: none;
+    padding: 20px;
+    color: white;
+    border: none;
+    font-weight: 500;
+    font-size: large;
+    width: 102%;
+    margin-top: 15px;
+}
+
+.form-button:hover, .form-button:active {
+    background-color:  rgb(22, 84, 141);
+}
+
+.form-control {
+    width: 45%;
+    display: inline-block;
+    margin: 1%;
+    padding: 1%;
+}
+
+.form-controlx {
+    width: 97%;
+    display: inline-block;
+    margin: 1%;
+    padding: 1%;
+}
+
+.col2 {
+    display: inline-block;
+    margin: 5% 28%;
+    width: 40%;
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    min-height: 500px;
+}
+
+#button {
+    margin-top:50px;
+}
+
+i {
+    padding-right: 30px;
+    margin-left: -20px;
+}
+
+.red {
+    background-color: rgb(241, 41, 41);
+}
+
+.red:hover, .red:active {
+    background-color: rgb(177, 26, 26);
+}
+
+form {
+    display: inline;
+}
+
+.theDiv {
+    position: absolute;
+    padding-left: 13.31%;
+}
+
+.login-form {
+    background-color: rgb(250, 250, 250);
+    border: 2.5px solid rgb(46,117,182);
+    border-radius: 10px;
+    padding: 2.8% 2%;
+    width: 17%;
+    margin: 0% 1% 2% 0%;
+    display: inline-block;
+}
+
+.login-heading {
+    text-align: center;
+    font-weight: 600;
+    font-family: "Adobe Garamond Pro", Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+    margin-bottom: 30px;
+    font-size: xx-large;
+}
+
+.login-button {
+    font-size: x-large;
+    font-weight: 500;
+    padding: 12px;
+    width: 102%;
+    background-color: rgb(56, 132, 202);
+    border: 2px solid rgb(56, 132, 202);
+    color: white;
+    border-radius: 15px;
+    outline: none;
+    margin-top: 30px;
+}
+
+.login-button:hover, .login-button:active {
+    background-color:  rgb(22, 84, 141);
+    border: 2px solid rgb(22, 84, 141);
+}
+
+.signup-form {
+    background-color: rgb(250, 250, 250);
+    border: 2.5px solid rgb(46,117,182);
+    border-radius: 10px;
+    padding: 3.5%;
+    width: 60%;
+    margin: 1%;
+    display: inline-block;
+}
+
+.form-control-login {
+    width: 90%;
+    display: inline-block;
+    margin: 3.5%;
+    padding: 1%;
+}
+
+.form-control-signup {
+    width: 45%;
+    display: inline-block;
+    margin: 1%;
+    padding: 1%;
+}
+
+.signup-button {
+    margin-left: 24.5%;
+    font-size: x-large;
+    font-weight: 500;
+    padding: 12px;
+    width: 51%;
+    background-color: rgb(56, 132, 202);
+    border: 2px solid rgb(56, 132, 202);
+    color: white;
+    border-radius: 15px;
+    outline: none;
+    margin-top: 30px;
+}
+
+.signup-button:hover, .signup-button:active {
+    background-color:  rgb(22, 84, 141);
+    border: 2px solid rgb(22, 84, 141);
+}
+
+.divtop {
+    width: 100%;
+    height: 150px;
+}
+
+.borders {
+    display: inline-block;
+    padding-left: 4%;
+    margin-left: 4%;
+    padding-right: 0px;
+    margin-right: 0px;
+    border-left: 2px solid black;
+}

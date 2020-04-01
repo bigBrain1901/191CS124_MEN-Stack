@@ -1,0 +1,47 @@
+<%- include("header") %> 
+<%- include("navbar-home") %>
+
+<div class="divtop"></div>
+<div class="theDiv">
+<form class="login-form" action="/" method="post">
+    <div class="login-heading"><u>LOGIN HERE</u></div>
+    <div class="form-control-login">
+        <label class="form-label" for="rno">IRIS Roll Number</label><br>
+        <input class="form-text" type="text" name="rno" id="rno" placeholder="Roll number" required autocomplete="off">
+    </div>
+    <div class="form-control-login">
+        <label class="form-label" for="pwd">Password</label><br>
+        <input class="form-text" type="password" name="pwd" id="pwd" placeholder="Password" required autocomplete="off">
+    </div>
+    <button class="login-button" type="submit">Login Now</button>
+</form>
+
+<div class="borders">
+<form action="/" method="post">
+    <div class="signup-form">
+        <div class="login-heading"><u>SIGNUP HERE</u></div>
+        <div class="form-control-signup">
+            <label class="form-label" for="name">IRIS Roll Number</label><br>
+            <input class="form-text" type="text" name="rno" id="rno" placeholder="Roll Number" required autocomplete="off">
+        </div>
+        <div class="form-control-signup">
+            <label class="form-label" for="name">Your Name</label><br>
+            <input class="form-text" type="text" name="name" id="name" placeholder="Display Name" required autocomplete="off">
+        </div>
+        <div class="form-control-signup">
+            <label class="form-label" for="password">Password</label><br>
+            <input class="form-text" type="password" name="pwd" id="pwd" placeholder="Password" required autocomplete="off">
+        </div>
+        <div class="form-control-signup">
+            <label class="form-label" for="pno">Contact Phone Number</label><br>
+            <input class="form-text" type="number" name="pno" id="pno" placeholder="phone_number" required autocomplete="off">
+        </div>
+        <button class="signup-button" type="submit">Signup Now</button>
+    </div>
+</form>
+</div>
+</div>
+
+<script>animate()</script>
+</body>
+</html>

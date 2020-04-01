@@ -1,0 +1,29 @@
+<body hidden>
+<div class="navbar">
+    <div class="navbar-heading">NITK AUCTIONS APP</div>
+        <% if (page_num==1) { %>
+        <div class="navbar-links">
+            <a class="navbar-link" style="color: black" href="#"><u>Add Item</u></a>
+            <a class="navbar-link" href="#">Auction Dashboard</a>
+            <a class="navbar-link" href="#">My Dashboard</a>
+            <a class="navbar-link" href="#">Logout</a>
+        </div>
+        <% } %>
+        <% if (page_num==2) { %>
+            <div class="navbar-links">
+                <a class="navbar-link" href="#">Add Item</a>
+                <a class="navbar-link" style="color: black" href="#"><u>Auction Dashboard</u></a>
+                <a class="navbar-link" href="#">My Dashboard</a>
+                <a class="navbar-link" href="#">Logout</a>
+            </div>
+        <% } %>
+        <% if (page_num==3) { %>
+            <div class="navbar-links">
+                <a class="navbar-link" href="#">Add Item</a>
+                <a class="navbar-link" href="#">Auction Dashboard</a>
+                <a class="navbar-link" style="color: black" href="#"><u>My Dashboard</u></a>
+                <a class="navbar-link" href="#">Logout</a>
+            </div>
+     
+        <% } %>
+</div>

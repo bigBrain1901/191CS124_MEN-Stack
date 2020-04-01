@@ -1,0 +1,32 @@
+/* 
+    Required variables : 
+        cards - array [{id, name, image, currentBid, description, deadline, highestBidder}] for all items to be shown
+        cardExpanded - boolean to check div expansion
+*/
+<% for( let index = 0; index < cards.length; index++ ) { %>
+    <% if (index % 3 == 1) { %>
+        <div class="row">
+    <% } %>
+        <div class="item-card" id="<%= cards[index].id %>">
+            <div class="item-card-heading"><%= cards[index].name %> </div>
+            <div class="item-card-image"><img src="<%= cards[index].image %>" alt="<%= cards[index].name %>"></div>
+            <button class="item-card-button" onclick="bid(this)" value="id" formaction="/route" formmethod="POST">
+                <%= cards[index].currentBid %>
+            </button>
+            <button class="item-card-button-logo" onclick="bid(this)"><%= logo %></button>
+            <div class="item-card-text">
+                <p><b>Item Description –</b> <%= cards[index].description %></p>
+            <% if (cardExpanded) { %>
+                    <p><b>Deadline –</b> <%= cards[index].deadline %></p>
+                    <p><b>Current Highest Bidder –</b><br><%= cards[index].highestBidder %></p>
+                </div>
+                <a onclick= "collapseDiv(this)" href="#" class="item-card-link">LESS INFO</a>
+            <% } else { %>
+                </div>
+                <a onclick= "expandDiv(this)" href="#" class="item-card-link">MORE INFO</a>
+            <% } %> 
+        </div>
+    <% if (index % 3 == 0) { %>
+        </div>
+    <% } %>
+<% } %>

@@ -1,0 +1,35 @@
+<%- include("header") %> 
+<%- include("navbar",{page_num:1}) %>
+<form action="/" method="post">
+        <div class="col2">
+            <div class="form-control">
+                <label class="form-label" for="name">Item Name</label><br>
+                <input class="form-text" type="text" name="name" id="name" placeholder="item_name" required autocomplete="off">
+            </div>
+            <div class="form-control">
+                <label class="form-label" for="deadline">Deadline</label><br>
+                <input class="form-text" type="date" name="deadline" id="deadline" placeholder="bid_deadline" required autocomplete="off">
+            </div>
+            <div class="form-control">
+                <label class="form-label" for="startingBid">Starting Bid (in INR)</label><br>
+                <input class="form-text" type="number" name="startingBid" id="startingBid" placeholder="start_bid in INR" required autocomplete="off">
+            </div>
+            <div class="form-control">
+                <label class="form-label" for="pno">Contact Phone</label><br>
+                <input class="form-text" type="number" name="pno" id="pno" placeholder="phone_number" required autocomplete="off">
+            </div>
+            <div class="form-controlx">
+                <label class="form-label" for="desc">Item Description</label><br>
+                <textarea class="form-textarea" rows="4" name="desc" id="desc" placeholder="item_desc" required autocomplete="off"></textarea>
+            </div>
+            <div class="form-control">
+                <button class="form-button" id="image" name="image"><i class="fas fa-upload"></i>Upload Image Here</button>
+            </div>
+            <div class="form-control">
+                <button class="form-button red" type="submit"><i class="fas fa-database"></i>SUBMIT FOR AUCTION</button>
+            </div>
+        </div>
+    </form>
+    <script>animate()</script>
+</body>
+</html>
