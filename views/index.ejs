@@ -1,7 +1,13 @@
 <%- include("header") %> 
 <%- include("navbar-home") %>
 
-<div class="divtop"></div>
+<div class="divtop">
+    <% if (type=="f") { %>
+        <div class="banner banner-red" hidden><%= text %></div>
+    <% } else if (type=="s") { %>
+        <div class="banner banner-green" hidden><%= text %></div>
+    <% } %> 
+</div>
 <div class="theDiv">
 <form class="login-form" action="/" method="post">
     <div class="login-heading"><u>LOGIN HERE</u></div>
@@ -13,10 +19,9 @@
         <label class="form-label" for="pwd">Password</label><br>
         <input class="form-text" type="password" name="pwd" id="pwd" placeholder="Password" required autocomplete="off">
     </div>
-    <button class="login-button" type="submit">Login Now</button>
+    <button class="login-button" type="submit" name="btn" value="login">Login Now</button>
 </form>
 
-<div class="borders">
 <form action="/" method="post">
     <div class="signup-form">
         <div class="login-heading"><u>SIGNUP HERE</u></div>
@@ -36,12 +41,16 @@
             <label class="form-label" for="pno">Contact Phone Number</label><br>
             <input class="form-text" type="number" name="pno" id="pno" placeholder="phone_number" required autocomplete="off">
         </div>
-        <button class="signup-button" type="submit">Signup Now</button>
+        <button class="signup-button" type="submit" name="btn" value="submit">Signup Now</button>
     </div>
 </form>
 </div>
-</div>
 
-<script>animate()</script>
+<% if (type!="n")  { %>
+    <script>showBody()</script>
+    <script>showBanner()</script>
+<% } else {%> 
+    <script>animate()</script>
+<% } %> 
 </body>
 </html>
