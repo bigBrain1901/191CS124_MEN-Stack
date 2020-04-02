@@ -9,9 +9,7 @@ MEN Stack Used - MySQL, Express, Node
 INSTALLATION INSTRUCTIONS
 
   Step 1 : Setup NODE and NPM
-    1. Windows and Mac Users -
-        Go to the following site - https://nodejs.org/en/
-        Download the current latest stable release and run the installer
+    1. Windows and Mac Users - Go to the following site - https://nodejs.org/en/ and download the current latest stable release and run the installer
     2. Linux Users - run "sudo apt-get nodejs npm" in terminal to install nodejs and npm
 
   --- Copy the project files to a directory of your choice and navigate to the project directory.
