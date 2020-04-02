@@ -1,11 +1,10 @@
 # 191CS124_MEN-Stack
-MEN Stack Used - MySQL, Express, Node and React with Bootstrap
+MEN Stack Used - MySQL, Express, Node
   1. MySQL - There are a lot of relational features in the database like - items related to users, being claimed by other
      users, etc...
   2. Node + Express - I am familiar with this backend framework, so...
   3. EJS - My design is card based and has a lot of repeating elements, making either ejs or react a good choice.
-     I chose ejs for this project to skip writing installation steps...
-  4. Bootstrap - Makes css life easy. Although, a lot of my css is actually not bootstrap...
+     I chose ejs for this project.
 
 INSTALLATION INSTRUCTIONS
 
