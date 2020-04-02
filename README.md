@@ -35,3 +35,9 @@ Features that can be added to web app :
 
     Responsiveness has not been added due to time constraints...
     My WebApp is viewer friendly in design for all screen-widths > 1366 right now.
+
+-----------------------------------------
+
+Known Bugs : 
+
+    Server level mimetype check not applied for form submissions.

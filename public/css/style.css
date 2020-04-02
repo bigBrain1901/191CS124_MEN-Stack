@@ -219,9 +219,15 @@ body {
     padding: 1%;
 }
 
+.divtop2 {
+    width: 100%;
+    height: 5%;
+    vertical-align: middle;
+}
+
 .col2 {
     display: inline-block;
-    margin: 5% 28%;
+    margin: 0% 28% 5% 28%;
     width: 40%;
     padding-right: 2%;
     padding-left: 2%;
@@ -309,6 +315,16 @@ form {
     display: inline-block;
     margin: 1%;
     padding: 1%;
+}
+
+.form-file {
+    position: absolute;
+    z-index: -1;
+    margin-top: 10px;
+    margin-left: 1px;
+    font-size: 115%;
+    opacity: 0;
+    padding: 1% 0px;
 }
 
 .signup-button {

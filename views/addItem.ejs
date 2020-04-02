@@ -1,6 +1,14 @@
 <%- include("header") %> 
 <%- include("navbar",{page_num:1}) %>
-<form action="/" method="post">
+
+<div class="divtop">
+    <% if (type=="f") { %>
+        <div class="banner banner-red" hidden><%= text %></div>
+    <% } else if (type=="s") { %>
+        <div class="banner banner-green" hidden><%= text %></div>
+    <% } %> 
+</div>
+<form action="/add" method="post" enctype="multipart/form-data">
         <div class="col2">
             <div class="form-control">
                 <label class="form-label" for="name">Item Name</label><br>
@@ -12,24 +20,33 @@
             </div>
             <div class="form-control">
                 <label class="form-label" for="startingBid">Starting Bid (in INR)</label><br>
-                <input class="form-text" type="number" name="startingBid" id="startingBid" placeholder="start_bid in INR" required autocomplete="off">
+                <input class="form-text" type="number" name="starting_bid" id="startingBid" placeholder="start_bid in INR" required autocomplete="off">
             </div>
             <div class="form-control">
                 <label class="form-label" for="pno">Contact Phone</label><br>
-                <input class="form-text" type="number" name="pno" id="pno" placeholder="phone_number" required autocomplete="off">
+                <input class="form-text" type="number" name="pno" id="pno" placeholder="Leave it blank for default..." autocomplete="off">
             </div>
             <div class="form-controlx">
                 <label class="form-label" for="desc">Item Description</label><br>
                 <textarea class="form-textarea" rows="4" name="desc" id="desc" placeholder="item_desc" required autocomplete="off"></textarea>
             </div>
             <div class="form-control">
-                <button class="form-button" id="image" name="image"><i class="fas fa-upload"></i>Upload Image Here</button>
+                <input class="form-file" id="image" name="image" type="file" name="image" accept="image/*" required autocomplete="off">
+                <form method="POST" action="/add/image">
+                    <button type="submit" class="form-button blue"><label for="image"><i class="fas fa-upload"></i>Upload Image Here</label></button>
+                </form>
             </div>
             <div class="form-control">
-                <button class="form-button red" type="submit"><i class="fas fa-database"></i>SUBMIT FOR AUCTION</button>
+                <button class="form-button red" type="submit">SUBMIT FOR AUCTION</button>
             </div>
         </div>
     </form>
+
+<% if (type!="n")  { %>
+    <script>showBody()</script>
+    <script>showBanner()</script>
+<% } else {%> 
     <script>animate()</script>
+<% } %> 
 </body>
 </html>
