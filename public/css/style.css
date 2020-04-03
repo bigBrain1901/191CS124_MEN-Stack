@@ -69,8 +69,8 @@ body {
     background-color: rgb(250, 250, 250);
     border: 2.5px solid rgb(46,117,182);
     border-radius: 10px;
-    padding: 2%;
-    width: 20%;
+    padding: 2% 2% 1% 2%;
+    width: 15%;
     margin: 1%;
     display: inline-block;
 }
@@ -90,16 +90,12 @@ body {
 .item-card-image {
     border: 2.5px solid rgb(46,117,182);
     border-radius: 5px;
-    margin-bottom: -50px;
+    margin-bottom: -60px;
     width: 100%;
+    max-height: 320px;
     overflow: hidden;
     border-radius: 30px;
-}
-
-.item-card-image:after {
-    content: "";
-    display: block;
-    padding-bottom: 100%;
+    display: inline-block;
 }
 
 .item-card-button {
@@ -109,7 +105,7 @@ body {
     outline: none;
     padding: 20px;
     width: 101.5%;
-    text-align: left;
+    text-align: center;
     color: white;
     border: none;
     font-weight: 500;
@@ -125,30 +121,49 @@ body {
     color: white;
     margin-top: -100px;
     margin-bottom: 50px;
-    z-index: 20;
+    z-index: 2;
     border: none;
     background-color: transparent;
     outline: none;
+    cursor: pointer;
 }
 
 .item-card-text {
     text-align: justify;
-    margin-top: -20px;
+    margin-top: -50px;
     padding: 5px;
-    font-size: large;
+    font-size: 130%;
+    word-wrap: break-word;
+}
+
+.expanded-text {
+    min-height: 300px;
 }
 
 .item-card-link {
     display: block;
     text-align: left;
-    padding: 5px;
-    margin-top: 5px;
     font-size: large;
     font-weight: 600;
     color: rgb(46,117,182);
 }
 
 .item-card-link:hover, .item-card-link:visited {
+    color: rgb(22, 84, 141);
+}
+
+.item-card-link-back {
+    display: block;
+    text-align: left;
+    font-size: large;
+    font-weight: 600;
+    margin-top: -17px;
+    padding-left: 5px;
+    margin-bottom: 22px;
+    color: rgb(46,117,182);
+}
+
+.item-card-link-back:hover, .item-card-link-back:visited {
     color: rgb(22, 84, 141);
 }
 
@@ -378,4 +393,67 @@ form {
 .banner-green {
     background-color: rgb(222, 253, 214);
     border-bottom: 5px solid green;
+}
+
+.divtop3 {
+    width: 100%;
+    height: 90px;
+    vertical-align: middle;
+}
+
+.flickity-page-dots {
+    display: none;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.image-bidding {
+    position: absolute;
+}
+
+.button-bidding {
+    position: relative;
+    height: 330px;
+    opacity: 90%;
+}
+
+.item-form-text {
+    outline: none;
+    font-size: medium;
+    font-weight: 100;
+    padding: 10px;
+    width: 93%;
+    border: 1px solid rgb(46,117,182);
+    border-radius: 8px;
+    margin-top: 5px;
+    font-family: "Calibri";
+
+}
+
+.item-form-text:hover, .item-form-text:active, .item-form-text:focus {
+    border: 2px solid rgb(22, 84, 141);
+    padding: 9px;
+    outline: none;
+}
+
+.item-form-button {
+    font-size: large;
+    font-weight: 500;
+    padding: 12px;
+    width: 102%;
+    background-color: rgb(56, 132, 202);
+    border: 2px solid rgb(56, 132, 202);
+    color: white;
+    border-radius: 15px;
+    outline: none;
+    margin-top: 30px;
+    margin-bottom: 2px;
+}
+
+.item-form-label {
+    font-size: large;
+    padding-left: 5px;
+    font-weight: 500;
 }

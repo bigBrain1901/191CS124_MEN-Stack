@@ -1,0 +1,22 @@
+<% for( let index = 0; index < cards.length; index++ ) { %>
+    <div class="item-card" id="<%= cards[index].id %>">
+        <div class="item-card-heading"><%= cards[index].name %> </div>
+        <div class="item-card-image" id="image-<%= cards[index].id %>"><img id="image-<%= cards[index].id %>" src="<%= cards[index].image %>" alt="<%= cards[index].name %>"></div>
+        <button class="item-card-button" id= "button-<%= cards[index].id %>">
+                <%= "CURRENT BID -- Rs " + cards[index].currentBid %> 
+        </button>
+        <div class="item-card-text" id="text-<%= cards[index].id %>">
+            <p><b>Item Description –</b> <%= cards[index].description %></p>
+            <p><b>Deadline –</b> <%= cards[index].deadline.toString().substring(4,15) %></p>
+            <a onclick="bid('<%= cards[index].id %>')" class="item-card-link">BID NOW!</a>
+        </div>
+        <div class="item-form" id="form-<%= cards[index].id %>" hidden>
+            <a onclick="unbid('<%= cards[index].id %>')" class="item-card-link-back">GO BACK</a>
+            <form action="/bid/<%= cards[index].id %>" method="post">
+                <label class="item-form-label" for="bid">Bid Amount</label>
+                <input class="item-form-text" type="number" name="bid" id="bid" min="<%= cards[index].currentBid + 1 %>" required>
+                <button class="item-form-button" type="submit">Bid</button>
+            </form>
+        </div>
+    </div>
+<% } %>

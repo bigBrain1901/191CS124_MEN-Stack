@@ -15,6 +15,9 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 //app-variable
 var loginID = -1;
+let array = [];
+var auctionFlag = false;
+var msg = "";
 
 //mysql connection parameters
 var con = mysql.createConnection({
@@ -87,11 +90,79 @@ app.route("/add")
 
 //function for auction route - Auction Dashboard Page
 app.route("/auction")
-  .get(function(req,res) {
-    if (loggedIn()) res.redirect("auction");
-    else res.redirect ("/");
+  .get(function(_,res) {
+    if (loggedIn()) {
+      array = [];
+      let sql = "select * from items where deadline >= DATE(NOW());";
+      con.query(sql, function (error,result) {
+        if (!error && result.length>0) {
+          for (let i=0; i< result.length; i++) {
+            
+            let current_bid, highest_bidder;
+            if (result[i].current_bid == 0) {       
+              current_bid = result[i].starting_bid;
+              highest_bidder = "No bids made yet!";
+            } else {
+              current_bid = result[i].current_bid;
+              let string = "select * from users where id = " +result[i].highest_bidder+ ";";
+              con.connect(function(_) {
+                con.query(string, function (error,response) {
+                  if (!error) highest_bidder = response[0].name;                
+                  else res.render("auction",{type:"f", text:"Database management error. Contact an admin...", cards:[]});
+                });
+              });
+            }
+            
+            let object = {
+              id: result[i].id,
+              name: result[i].name,
+              image: "uploads/" + result[i].image,
+              currentBid: current_bid,
+              description: result[i].description.substring(0,110) + ((result[i].description.length<110)? "" : " ..."),
+              deadline: result[i].deadline,
+              highestBidder: highest_bidder
+            };
+            
+            array.push(object);
+          }
+          if (auctionFlag && msg!="") res.render("auction",{type:"s", text:"Your bid has been registered. Check dashboard for info.", cards: array});
+          else if (!auctionFlag && msg!="") res.render("auction",{type:"f", text:"Stop messing with the HTML!",cards: array});
+          else res.render("auction",{type:"n", text:"", cards:array});
+        }
+        else res.render("auction",{type:"f", text:"Noone has uploaded items yet. Be the first one!", cards:[]});
+      });
+    }
+    else res.redirect("/");
   })
   .post();
+
+//route for updatig bidding status of items
+app.post("/bid/:key", function (req,res) {
+  auctionFlag = false;
+  msg = "";
+  let sql = "select * from items where id = " +req.params.key+ ";";
+  con.query(sql, function (error,result) {
+    if (!error) {
+      if (req.body.bid > result[0].current_bid) {
+        let string = sqlUpdate("current_bid",req.body.bid,"id = "+req.params.key);
+        con.query(string, function (_,_) {});
+        string = sqlUpdate("highest_bidder",loginID,"id = "+req.params.key);
+        con.query(string, function (_,_) {});
+        auctionFlag = true;
+        msg = "Your bid has been registered. Check dashboard for info.";
+        res.redirect("/auction");
+      } else {
+        auctionFlag = false;
+        msg = "Stop messing with the HTML!";
+        res.redirect("/auction");
+      } 
+    } else {
+      auctionFlag = false;
+      msg = "Stop messing with the HTML!";
+      res.redirect("/auction");
+    }
+  });
+});
 
 //port-on-system to listen on
 app.listen(3000);
@@ -112,7 +183,7 @@ function logout() {
 function sqlUpdate (param, newValue, condition) {
   //works only for items table
   //construction of sql command
-  return "update items set " +param+ " = " +newValue+ "where " +condition+ ";";
+  return "update items set " +param+ " = " +newValue+ " where " +condition+ ";";
 }
 
 function sqlInsert (table, params) {
@@ -162,4 +233,8 @@ function registerUser(rno,name,pwd,pno,res) {
       else res.render("index",{type:"f", text:"This account already exists or your data is invalid."});
     });
   });
+}
+
+function renderAuction() {
+  
 }
