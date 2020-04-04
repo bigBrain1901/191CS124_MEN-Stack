@@ -1,0 +1,25 @@
+<%- include("header") %> 
+<%- include("navbar",{page_num:2}) %>
+
+<div class="dashboard-heading">Claim your items!</div>
+<div class="dashboard-subheading">The deadlines for the following items are met, and you are the higest bidder!</div>
+<div class="main-gallery" data-flickity='{ "freeScroll": true, "adaptiveHeight": false}'>
+    <%- include("ItemCards-small",cardsToClaim) %> 
+</div>
+
+<hr>
+
+<div class="dashboard-heading">Your Items on Auction!</div>
+<div class="dashboard-subheading">These are your items. Spread the word!</div>
+<div class="main-gallery" data-flickity='{ "freeScroll": true, "adaptiveHeight": false}'>
+    <%- include("ItemCards-small",myCards) %> 
+</div>
+
+<% if (type!="n")  { %>
+    <script>showBody()</script>
+    <script>showBanner()</script>
+<% } else {%> 
+    <script>animate()</script>
+<% } %> 
+</body>
+</html>

@@ -146,6 +146,7 @@ body {
     font-size: large;
     font-weight: 600;
     color: rgb(46,117,182);
+    cursor: pointer;
 }
 
 .item-card-link:hover, .item-card-link:visited {
