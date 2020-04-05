@@ -1,23 +1,43 @@
-<%- include("header") %> 
+<%- include("header") %>
 <%- include("navbar",{page_num:2}) %>
 
 <div class="divtop3">
     <% if (type=="f") { %>
-        <div class="banner banner-red" hidden><%= text %></div>
+    <div class="banner banner-red" hidden><%= text %></div>
     <% } else if (type=="s") { %>
-        <div class="banner banner-green" hidden><%= text %></div>
-    <% } %> 
+    <div class="banner banner-green" hidden><%= text %></div>
+    <% } %>
 </div>
 
-<div class="main-gallery" data-flickity='{ "freeScroll": true, "adaptiveHeight": true}'>
-    <%- include("ItemCards",cards) %> 
+<section>
+<div class="dashboard-heading">ONGOING AUCTION !</div>
+<div class="dashboard-subheading">Bid for your favourite items here. Everyone finds something useful here!</div>
+<div class="main-gallery" data-flickity='{ "freeScroll": true, "adaptiveHeight": false}'>
+    <%- include("ItemCards",{cards: cards1}) %>
 </div>
+</section>
+
+<section>
+<div class="dashboard-heading">SOLD OUT !</div>
+<div class="dashboard-subheading">These items were sold out earlier! Check them out.</div>
+<div class="main-gallery" data-flickity='{ "freeScroll": true}' style="height: 700px;">
+    <%- include("ItemCardsOld",{cards: cards2}) %>
+</div>
+<div class="banner"></div>
+</section>
 
 <% if (type!="n")  { %>
-    <script>showBody()</script>
-    <script>showBanner()</script>
-<% } else {%> 
-    <script>animate()</script>
-<% } %> 
+<script>
+    showBody()
+</script>
+<script>
+    showBanner()
+</script>
+<% } else {%>
+<script>
+    animate()
+</script>
+<% } %>
 </body>
+
 </html>

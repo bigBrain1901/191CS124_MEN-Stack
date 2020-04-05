@@ -44,21 +44,23 @@ const upload = multer({
 //---------------------------------------------------------------------------------------------
 //SERVER ROUTING STARTS NOW...
 
-//function for home route - login Page
-app.route("/")
+//function for home route - HomePage
+app.get("/", function (req,res) {
+  res.render ("index");
+});
+
+//function for login route - login Page
+app.route("/login")
   .get(function (_, res) {
     logout();
-    res.render("index", {
+    res.render("login", {
       type: "n",
       text: ""
     });
   })
   .post(function (req, res) {
-    if (!loggedIn()) res.redirect("/");
-    else {
-      if (req.body.btn == "login") loginUser(req.body.rno, req.body.pwd, res);
-      else registerUser(req.body.rno, req.body.name, req.body.pwd, req.body.pno, res);
-    }
+    if (req.body.btn == "login") loginUser(req.body.rno, req.body.pwd, res);
+    else registerUser(req.body.rno, req.body.name, req.body.pwd, req.body.pno, res);
   });
 
 //function for add route - Add Items for Auction Page
@@ -102,14 +104,7 @@ app.route("/add")
 app.route("/auction")
   .get(function (_, res) {
     if (loggedIn()) {
-      query.makeSelection("items", "deadline >= DATE(NOW())", (result) => {
-        if (result.length != 0) renderAuction(result, res);
-        else res.render("auction", {
-          type: "f",
-          text: "Noone has uploaded items yet. Be the first one!",
-          cards: []
-        });
-      });
+      renderAuction(res);
     } else res.redirect("/");
   });
 
@@ -144,8 +139,6 @@ app.route("/dashboard")
 app.post("/bid/:key", function (req, res) {
   if (!loggedIn()) res.redirect("/");
   else {
-    auctionFlag = false;
-    msg = "";
     query.makeSelection("items", "id = " + req.params.key, (result) => {
       if (req.body.bid > result[0].current_bid && req.body.bid > result[0].starting_bid) {
         query.makeUpdation("current_bid", req.body.bid, "id = " + req.params.key, (_) => {});
@@ -153,7 +146,7 @@ app.post("/bid/:key", function (req, res) {
         flag = true;
         msg = "Your bid has been registered. Check dashboard for info.";
       } else {
-        auctionFlag = false;
+        flag = false;
         msg = "Stop messing with the HTML!";
       }
     });
@@ -203,7 +196,7 @@ function loginUser(rno, pwd, res) {
     if (result.length > 0) {
       loginID = result[0].id;
       res.redirect("/add");
-    } else res.render("index", {
+    } else res.render("login", {
       type: "f",
       text: "We were unable to log you in. Please check your credentials."
     });
@@ -218,11 +211,11 @@ function registerUser(rno, name, pwd, pno, res) {
     pwd: pwd,
     pno: pno
   }, (result) => {
-    if (result == 1) res.render("index", {
+    if (result == 1) res.render("login", {
       type: "s",
       text: "Your account has been created. You can now login."
     });
-    else res.render("index", {
+    else res.render("login", {
       type: "f",
       text: "This account already exists or your data is invalid."
     });
@@ -230,22 +223,62 @@ function registerUser(rno, name, pwd, pno, res) {
 }
 
 //breaking down complex page render...
-function renderAuction(result, res) {
-  prepareArray(result, (array) => {
-    if (flag && msg != "") res.render("auction", {
-      type: "s",
-      text: "Your bid has been registered. Check dashboard for info.",
-      cards: array
-    });
-    else if (!flag && msg != "") res.render("auction", {
-      type: "f",
-      text: "Stop messing with the HTML!",
-      cards: array
-    });
-    else res.render("auction", {
-      type: "n",
-      text: "",
-      cards: array
+function renderAuction(res) {
+  query.makeSelection("items", "deadline >= DATE(NOW())", (result) => {
+    if (result.length != 0) {
+      prepareArray(result, (array1) => {
+        query.makeSelection("items", "deadline < DATE(NOW())", (response) => {
+          if (response.length != 0) {
+            prepareArrayOld(response, (array2) => {
+              if (flag && msg != "") res.render("auction", {
+                type: "s",
+                text: "Your bid has been registered. Check dashboard for info.",
+                cards1: array1,
+                cards2: array2
+              });
+              else if (!flag && msg != "") res.render("auction", {
+                type: "f",
+                text: "Stop messing with the HTML!",
+                cards1: array1,
+                cards2: array2
+              });
+              else res.render("auction", {
+                type: "n",
+                text: "",
+                cards1: array1,
+                cards2: array2
+              });
+              flag = false;
+              msg = "";
+            });
+          }
+        });
+      });
+    } else query.makeSelection("items", "deadline < DATE(NOW())", (response) => {
+      if (response.length != 0) {
+        prepareArrayOld(response, (array2) => {
+          if (flag && msg != "") res.render("auction", {
+            type: "f",
+            text: "Your bid has been registered. Check dashboard for info.",
+            cards1: [],
+            cards2: array2
+          });
+          else if (!flag && msg != "") res.render("auction", {
+            type: "f",
+            text: "Noone has uploaded items yet. Be the first one!",
+            cards1: [],
+            cards2: array2
+          });
+          else res.render("auction", {
+            type: "f",
+            text: "Noone has uploaded items yet. Be the first one!",
+            cards1: [],
+            cards2: array2
+          });
+          flag = false;
+          msg = "";
+        });
+      }
     });
   });
 }
@@ -259,12 +292,51 @@ function prepareArray(result, cb) {
       name: result[i].name,
       image: "uploads/" + result[i].image,
       currentBid: (result[i].current_bid == 0) ? result[i].starting_bid : result[i].current_bid,
-      description: result[i].description.substring(0, 90) + ((result[i].description.length < 90) ? "" : " ..."),
-      deadline: result[i].deadline,
+      description: result[i].description.substring(0, 90),
+      deadline: result[i].deadline
     };
+    fixText(result[i].description.length, (string) => {
+      object.description += string;
+    });
     array.push(object);
   }
   cb(array);
+}
+
+function fixText(x, cb) {
+  let string = "";
+  for (let j = 1; j < 110 - x; j++) string += "\xa0";
+  cb(string);
+}
+
+function prepareArrayOld(result, cb) {
+  let array = [];
+  for (let i = 0; i < result.length; i++) {
+    let object = {
+      id: result[i].id,
+      name: result[i].name,
+      image: "uploads/" + result[i].image,
+      currentBid: (result[i].current_bid == 0) ? result[i].starting_bid : result[i].current_bid,
+      description: result[i].description.substring(0, 90),
+      deadline: result[i].deadline,
+      creator: "",
+      highestBidder: ""
+    };
+    fixText(result[i].description.length, (string) => {
+      object.description += string;
+      getHighestBidder(result[i].highest_bidder, (response) => {
+        object.highestBidder = response;
+        getCreator(result[i].creatorid, (name) => {
+          object.creator = name;
+          array.push(object);
+        });
+        setTimeout(() => {
+          cb(array);
+        }, 100);
+      });
+    });
+  }
+  
 }
 
 function prepareArraySmall(result, cb) {
@@ -306,6 +378,13 @@ function prepareArrayUser(result, cb) {
 
 function getHighestBidder(highest_bidder, cb) {
   query.makeSelection("users", "id = " + highest_bidder, (res) => {
+    cb(res[0].name);
+  });
+}
+
+function getCreator(creatorID, cb) {
+  query.makeSelection("users", "id = " + creatorID, (res) => {
+    console.log(creatorID);
     cb(res[0].name);
   });
 }

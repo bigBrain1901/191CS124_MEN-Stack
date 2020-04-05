@@ -10,13 +10,6 @@ function showBanner() {
 }
 
 function showBody() {
-    //     document.onreadystatechange = () => {
-    //         if (document.readyState === 'complete') {
-    //             $("body").show();
-    //             setTimeout(showBanner(), 500);
-    //         }
-    //     };
-    // }
     $("body").show();
 }
 

@@ -16,11 +16,19 @@
 <div class="dashboard-subheading">These are your items. Spread the word!</div>
     <% if (cardsUploaded.length == 0) { %>
         <div class="divtop shift"><div class="banner banner-red" hidden>Oops! There is nothing to display here.</div></div>
+        <div class="dashboard-div">
+            <a href="/add" class="dashboard-button">ADD AN ITEM</a>
+        </div>
     <% } else { %>
+        <div class="dashboard-div">
+            <a href="/add" class="dashboard-button">ADD AN ITEM</a>
+        </div>
         <div class="main-gallery" data-flickity='{ "freeScroll": true, "initialIndex": 1}'>
             <%- include("itemCards-uploaded",{cards: cardsUploaded}) %>
         </div>
     <% } %> 
+
+
 
     <script>showBody()</script>
     <script>showBanner()</script>
