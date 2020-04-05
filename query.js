@@ -11,7 +11,7 @@ var con = mysql.createConnection({
 });
 
 //standard function to open a connection to the database
-con.connect()
+con.connect();
 
 //this function executes a create query
 //returns 1 if successful, 0 otherwise
@@ -45,6 +45,15 @@ function queryUpdate(sql, cb) {
     });
 }
 
+//this function executes a delete query
+//returns 1 if successful, 0 otherwise
+function queryDelete(sql, cb) {
+    con.query(sql, (err, res) => {
+        if (err) console.log(err);
+         cb((!err) ? 1 : 0);
+    });
+}
+
 //this function prepares a create command
 //returns the command
 function makeInsert(table, params, cb) {
@@ -73,6 +82,15 @@ function makeUpdate(param, newValue, condition, cb) {
     });
 }
 
+//this function prepares an delete command
+//returns the command
+function makeDelete(table,condition,cb) {
+    queryDelete("delete from " + table + " where " + condition + ";", (res) => {
+        cb(res);
+    });
+}
+
 exports.makeSelection = makeSelect;
 exports.makeInsertion = makeInsert;
 exports.makeUpdation = makeUpdate;
+exports.makeDeletion = makeDelete;

@@ -54,8 +54,11 @@ app.route("/")
     });
   })
   .post(function (req, res) {
-    if (req.body.btn == "login") loginUser(req.body.rno, req.body.pwd, res);
-    else registerUser(req.body.rno, req.body.name, req.body.pwd, req.body.pno, res);
+    if (!loggedIn()) res.redirect("/");
+    else {
+      if (req.body.btn == "login") loginUser(req.body.rno, req.body.pwd, res);
+      else registerUser(req.body.rno, req.body.name, req.body.pwd, req.body.pno, res);
+    }
   });
 
 //function for add route - Add Items for Auction Page
@@ -68,37 +71,38 @@ app.route("/add")
     else res.redirect("/");
   })
   .post(upload.single("image"), function (req, res) {
-    let params = {
-      name: req.body.name,
-      description: req.body.desc,
-      starting_bid: req.body.starting_bid,
-      deadline: req.body.deadline,
-      contact: req.body.pno,
-      image: req.file.filename,
-      loginID: loginID
-    };
-    query.makeInsertion("items", params, (result) => {
-      if (result == 1) res.render("addItem", {
-        type: "s",
-        text: "Your item has been added for auction!"
-      });
-      else {
-        fs.unlink(req.file.filename, (err) => {});
-        res.render("addItem", {
-          type: "f",
-          text: "Invalid entry detected. Please check and re-enter details."
+    if (!loggedIn()) res.redirect("/");
+    else {
+      let params = {
+        name: req.body.name,
+        description: req.body.desc,
+        starting_bid: req.body.starting_bid,
+        deadline: req.body.deadline,
+        contact: req.body.pno,
+        image: req.file.filename,
+        loginID: loginID
+      };
+      query.makeInsertion("items", params, (result) => {
+        if (result == 1) res.render("addItem", {
+          type: "s",
+          text: "Your item has been added for auction!"
         });
-      }
-    });
+        else {
+          fs.unlink(req.file.filename, (_) => {});
+          res.render("addItem", {
+            type: "f",
+            text: "Invalid entry detected. Please check and re-enter details."
+          });
+        }
+      });
+    }
   });
 
 //function for auction route - Auction Dashboard Page
 app.route("/auction")
   .get(function (_, res) {
     if (loggedIn()) {
-      query.makeSelection("items", "", (result) => {
-        console.log(result);
-
+      query.makeSelection("items", "deadline >= DATE(NOW())", (result) => {
         if (result.length != 0) renderAuction(result, res);
         else res.render("auction", {
           type: "f",
@@ -107,25 +111,75 @@ app.route("/auction")
         });
       });
     } else res.redirect("/");
-  })
-  .post();
+  });
+
+//function for dashboard route - User Dashboard Page
+app.route("/dashboard")
+  .get(function (_, res) {
+    if (loggedIn()) {
+      let cardsToClaim;
+      query.makeSelection("items", "highest_bidder = " + loginID + " and deadline < DATE(NOW()) order by status", (result) => {
+        prepareArraySmall(result, (array) => {
+          cardsToClaim = array;
+        });
+      });
+      let cardsUploaded;
+      query.makeSelection("items", "creatorID = " + loginID + " order by deadline desc", (result) => {
+        prepareArrayUser(result, (array) => {
+          cardsUploaded = array;
+        });
+      });
+      setTimeout(() => {
+        res.render("dashboard", {
+          type: "n",
+          msg: "",
+          cardsToClaim: cardsToClaim,
+          cardsUploaded: cardsUploaded
+        });
+      }, 10);
+    } else res.redirect("/");
+  });
 
 //route for updatig bidding status of items
 app.post("/bid/:key", function (req, res) {
-  auctionFlag = false;
-  msg = "";
-  query.makeSelection("items", "id = " + req.params.key, (result) => {
-    if (req.body.bid > result[0].current_bid) {
-      query.makeUpdation("current_bid", req.body.bid, "id = " + req.params.key, (result) => {});
-      query.makeUpdation("highest_bidder", loginID, "id = " + req.params.key, (result) => {});
-      flag = true;
-      msg = "Your bid has been registered. Check dashboard for info.";
-    } else {
-      auctionFlag = false;
-      msg = "Stop messing with the HTML!";
-    }
-  });
-  res.redirect("/auction");
+  if (!loggedIn()) res.redirect("/");
+  else {
+    auctionFlag = false;
+    msg = "";
+    query.makeSelection("items", "id = " + req.params.key, (result) => {
+      if (req.body.bid > result[0].current_bid && req.body.bid > result[0].starting_bid) {
+        query.makeUpdation("current_bid", req.body.bid, "id = " + req.params.key, (_) => {});
+        query.makeUpdation("highest_bidder", loginID, "id = " + req.params.key, (_) => {});
+        flag = true;
+        msg = "Your bid has been registered. Check dashboard for info.";
+      } else {
+        auctionFlag = false;
+        msg = "Stop messing with the HTML!";
+      }
+    });
+    res.redirect("/auction");
+  }
+});
+
+app.post("/delete/:key", function (req, res) {
+  if (!loggedIn()) res.redirect("/");
+  else {
+    query.makeDeletion("items", "id = " + req.params.key, () => {});
+    res.redirect("/dashboard");
+  }
+});
+
+app.post("/claim/:key", function (req, res) {
+  if (!loggedIn()) res.redirect("/");
+  else {
+    query.makeUpdation("status", "\"Y\"", "id = " + req.params.key, () => {});
+    res.redirect("/dashboard");
+  }
+});
+
+app.get("/logout", function (_, res) {
+  logout();
+  res.redirect("/");
 });
 
 //port-on-system to listen on
@@ -211,4 +265,47 @@ function prepareArray(result, cb) {
     array.push(object);
   }
   cb(array);
+}
+
+function prepareArraySmall(result, cb) {
+  let array = [];
+  for (let i = 0; i < result.length; i++) {
+    let object = {
+      id: result[i].id,
+      name: result[i].name,
+      image: "uploads/" + result[i].image,
+      currentBid: (result[i].current_bid == 0) ? result[i].starting_bid : result[i].current_bid,
+      status: result[i].status
+    };
+    array.push(object);
+  }
+  cb(array);
+}
+
+function prepareArrayUser(result, cb) {
+  let array = [];
+  for (let i = 0; i < result.length; i++) {
+    let object = {
+      id: result[i].id,
+      name: result[i].name,
+      image: "uploads/" + result[i].image,
+      currentBid: (result[i].current_bid == 0) ? result[i].starting_bid : result[i].current_bid,
+      status: result[i].status,
+      highestBidder: "",
+      deadline: result[i].deadline,
+      stratingBid: result[i].starting_bid
+    };
+    if (result[i].status == "Y") getHighestBidder(result[i].highest_bidder, (name) => {
+      object.highestBidder = name;
+    });
+
+    array.push(object);
+  }
+  cb(array);
+}
+
+function getHighestBidder(highest_bidder, cb) {
+  query.makeSelection("users", "id = " + highest_bidder, (res) => {
+    cb(res[0].name);
+  });
 }

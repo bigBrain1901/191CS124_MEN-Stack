@@ -15,7 +15,7 @@
         <a onclick="unbid('<%= cards[index].id %>')" class="item-card-link-back">GO BACK</a>
         <form action="/bid/<%= cards[index].id %>" method="post">
             <label class="item-form-label" for="bid">Bid Amount</label>
-            <input class="item-form-text" type="number" name="bid" id="bid" min="<%= cards[index].currentBid + 1 %>"
+            <input class="item-form-text" type="number" name="bid" id="bid" autofocus min="<%= cards[index].currentBid + 1 %>"
                 required>
             <button class="item-form-button" type="submit">Bid</button>
         </form>

@@ -364,7 +364,7 @@ form {
 
 .divtop {
     width: 100%;
-    height: 120px;
+    height: 110px;
     vertical-align: middle;
 }
 
@@ -457,4 +457,50 @@ form {
     font-size: large;
     padding-left: 5px;
     font-weight: 500;
+}
+
+.item-card-button-claim {
+    border-radius: 40px;
+    background-color: rgb(46,117,182);
+    margin-bottom: 50px;
+    outline: none;
+    padding: 20px;
+    width: 101.5%;
+    text-align: center;
+    color: white;
+    border: none;
+    font-weight: 500;
+    font-size: large;
+    cursor: pointer;
+}
+
+.dashboard-heading {
+    font-family: "Adobe Garamond Pro", Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+    text-align: center;
+    font-size: 200%;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    padding-top: 0.6%;
+}
+
+.dashboard-subheading {
+    color: rgb(140, 140, 140);
+    font-size: x-large;
+    margin-bottom: 50px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.main-gallery {
+    margin-bottom: 50px;
+}
+
+.left {
+    padding-left: 12%;
+    padding-right: 0%;
+}
+
+.shift {
+    display: block;
 }
