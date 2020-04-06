@@ -72,7 +72,7 @@ I have tested only on these parameters, although lower resolution is accounted f
 1. If you see hell load of random errors saying "previlage" related "mysql" stuff, do the following..
    1. Open a new terminal anywhere
    1. Run the command `sudo mysql -u root -p` and enter your password.
-   1. Run the command `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '_yourPasswordHere_';
+   1. Run the command `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '_yourPasswordHere_';`
    1. Run the command `exit`
    1. Go back to the earlier terminal that you used for step 7 above.
    1. Hit `ctrl+C` and rerun `sudo node server.js` and you should be up and running!
