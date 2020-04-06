@@ -46,7 +46,6 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (40,97,'Apple','Ripe and sweet apple. It is red in colour and is organically grown. qwewerteterq',100,'2020-04-06',0,'image-1586095036650.jpg',1501,97,'N'),(41,97,'Orange Juice','Freshly prepared sugarfree juice from organically grown ripe, sweet orange.',200,'2020-04-07',0,'image-1586095151860.jpg',5000,99,'N'),(42,99,'Old Apple','qwerty qwerty qwerty qwerty qwerty qwerty qwery qwe qwerty werty qwert qwert wer',1000,'2020-04-01',0,'image-1586095820743.jpg',0,99,'Y'),(45,97,'qwery','wewe',232323,'2020-04-02',0,'image-1586101152493.jpg',0,97,'Y');
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,7 +65,7 @@ CREATE TABLE `users` (
   `pno` bigint NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `rno` (`rno`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +74,6 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (97,'1','Anupama Singh','2020-04-05 13:51:33','81dc9bdb52d04dc20036dbd8313ed055',8105232958),(98,'2','Prakash Singh','2020-04-05 13:51:55','81dc9bdb52d04dc20036dbd8313ed055',8105655223),(99,'3','Ishaan SIngh','2020-04-05 13:53:23','81dc9bdb52d04dc20036dbd8313ed055',9739492999);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -88,4 +86,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-06 21:10:47
+-- Dump completed on 2020-04-07  1:19:41

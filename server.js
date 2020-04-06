@@ -207,7 +207,7 @@ function loginUser(rno, pwd, res) {
     if (result.length > 0) {
       loginID = result[0].id;
       user = result[0].name;
-      res.redirect("/auction");
+      res.redirect("/add");
     } else res.render("login", {
       type: "f",
       text: "We were unable to log you in. Please check your credentials."
@@ -391,6 +391,8 @@ function prepareArrayUser(result, cb) {
 
     array.push(object);
   }
+  console.log(array);
+  
   cb(array);
 }
 
