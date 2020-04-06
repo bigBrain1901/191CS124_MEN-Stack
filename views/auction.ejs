@@ -1,5 +1,5 @@
 <%- include("header") %>
-<%- include("navbar",{page_num:2}) %>
+<%- include("navbar",{page_num:2, user: user}) %>
 
 <div class="divtop">
     <% if (type=="f") { %>
@@ -10,9 +10,12 @@
 </div>
 
 <section>
-<div class="dashboard-heading">ONGOING AUCTION !</div>
+<div class="dashboard-heading special-div">ONGOING AUCTION !</div>
 <div class="dashboard-subheading">Bid for your favourite items here. Everyone finds something useful here!</div>
-<div class="main-gallery" data-flickity='{ "freeScroll": true, "adaptiveHeight": false}'>
+<div class="dashboard-div">
+    <a href="/add" class="dashboard-button">ADD AN ITEM</a>
+</div>
+<div class="main-gallery" data-flickity='{"freeScroll": true, "adaptiveHeight": false}'>
     <%- include("ItemCards",{cards: cards1}) %>
 </div>
 </section>

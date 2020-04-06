@@ -6,7 +6,7 @@
             <a class="navbar-link" style="color: black" href=""><u>Add Item</u></a>
             <a class="navbar-link" href="/auction">Auction Dashboard</a>
             <a class="navbar-link" href="/dashboard">My Dashboard</a>
-            <a class="navbar-link" href="/logout">Logout</a>
+            <a class="navbar-link" onclick="toggleProfile()"><i class="fa fa-user navbar-i"></i></a>
         </div>
         <% } %>
         <% if (page_num==2) { %>
@@ -14,7 +14,7 @@
                 <a class="navbar-link" href="/add">Add Item</a>
                 <a class="navbar-link" style="color: black" href=""><u>Auction Dashboard</u></a>
                 <a class="navbar-link" href="/dashboard">My Dashboard</a>
-                <a class="navbar-link" href="/logout">Logout</a>
+                <a class="navbar-link" onclick="toggleProfile()"><i class="fa fa-user navbar-i"></i></a>
             </div>
         <% } %>
         <% if (page_num==3) { %>
@@ -22,7 +22,11 @@
                 <a class="navbar-link" href="/add">Add Item</a>
                 <a class="navbar-link" href="/auction">Auction Dashboard</a>
                 <a class="navbar-link" style="color: black" href=""><u>My Dashboard</u></a>
-                <a class="navbar-link" href="/logout">Logout</a>
+                <a class="navbar-link" onclick="toggleProfile()"><i class="fa fa-user navbar-i"></i></a>
             </div>
         <% } %>
+</div>
+<div class="profile" hidden>
+    <p class="profile-text">Hey, <%= user.substring(0,((user.indexOf(" ")==-1) ? user.length : user.indexOf(" ")))%>!</p>
+    <a class="profile-link" href="/logout">Logout</a>
 </div>

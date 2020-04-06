@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({
 
 //app-variable
 var loginID = -1;
+var user = "";
 var flag = false;
 var msg = "";
 
@@ -68,7 +69,8 @@ app.route("/add")
   .get(function (_, res) {
     if (loggedIn()) res.render("addItem", {
       type: "n",
-      text: ""
+      text: "",
+      user:user
     });
     else res.redirect("/");
   })
@@ -93,7 +95,8 @@ app.route("/add")
           fs.unlink(req.file.filename, (_) => {});
           res.render("addItem", {
             type: "f",
-            text: "Invalid entry detected. Please check and re-enter details."
+            text: "Invalid entry detected. Please check and re-enter details.",
+            user:user
           });
         }
       });
@@ -118,6 +121,12 @@ app.route("/dashboard")
           cardsToClaim = array;
         });
       });
+      let cardsMine;
+      query.makeSelection("items", "highest_bidder = " + loginID + " order by deadline", (result) => {
+        prepareArray(result, (array) => {
+          cardsMine = array;
+        });
+      });
       let cardsUploaded;
       query.makeSelection("items", "creatorID = " + loginID + " order by deadline desc", (result) => {
         prepareArrayUser(result, (array) => {
@@ -129,9 +138,11 @@ app.route("/dashboard")
           type: "n",
           msg: "",
           cardsToClaim: cardsToClaim,
-          cardsUploaded: cardsUploaded
+          cardsUploaded: cardsUploaded,
+          cardsMine: cardsMine,
+          user:user
         });
-      }, 10);
+      }, 15);
     } else res.redirect("/");
   });
 
@@ -195,7 +206,8 @@ function loginUser(rno, pwd, res) {
   query.makeSelection("users", "rno = \"" + rno + "\" and pwd = \"" + md5(pwd) + "\"", (result) => {
     if (result.length > 0) {
       loginID = result[0].id;
-      res.redirect("/add");
+      user = result[0].name;
+      res.redirect("/auction");
     } else res.render("login", {
       type: "f",
       text: "We were unable to log you in. Please check your credentials."
@@ -234,19 +246,22 @@ function renderAuction(res) {
                 type: "s",
                 text: "Your bid has been registered. Check dashboard for info.",
                 cards1: array1,
-                cards2: array2
+                cards2: array2,
+                user:user
               });
               else if (!flag && msg != "") res.render("auction", {
                 type: "f",
                 text: "Stop messing with the HTML!",
                 cards1: array1,
-                cards2: array2
+                cards2: array2,
+                user:user
               });
               else res.render("auction", {
                 type: "n",
                 text: "",
                 cards1: array1,
-                cards2: array2
+                cards2: array2,
+                user:user
               });
               flag = false;
               msg = "";
@@ -261,19 +276,22 @@ function renderAuction(res) {
             type: "f",
             text: "Your bid has been registered. Check dashboard for info.",
             cards1: [],
-            cards2: array2
+            cards2: array2,
+            user:user
           });
           else if (!flag && msg != "") res.render("auction", {
             type: "f",
             text: "Noone has uploaded items yet. Be the first one!",
             cards1: [],
-            cards2: array2
+            cards2: array2,
+            user:user
           });
           else res.render("auction", {
             type: "f",
             text: "Noone has uploaded items yet. Be the first one!",
             cards1: [],
-            cards2: array2
+            cards2: array2,
+            user:user
           });
           flag = false;
           msg = "";

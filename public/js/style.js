@@ -41,3 +41,7 @@ function claim(key) {
         location.reload();
     });
 }
+
+function toggleProfile () {
+    $(".profile").slideToggle("fast");
+}
