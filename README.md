@@ -41,7 +41,7 @@ I have tested only on these parameters, although lower resolution is accounted f
       _It is important this terminal is open in your project folder only._
 
 1. __Setup MySQL database for the project__
-   1. Head over to https://dev.mysql.com/downloads/windows/installer/8.0.html and download the installer for any OS you are running.
+   1. Head over to https://dev.mysql.com/downloads/mysql/ and download the installer for any OS you are running.
       1. Get the installer for windows or Mac.
       1. Run `sudo apt install mysql-server` to install followed by `sudo mysql_secure_installation` to setup the root account on linux
    1. Run `mysql --version` to check if MySQL installed successfully. My instructions might be wierd to follow, but you can look-up the documentation on https://dev.mysql.com/doc/mysql-installation-excerpt/8.0/en/ for assistance.
