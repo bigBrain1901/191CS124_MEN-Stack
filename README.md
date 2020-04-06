@@ -9,6 +9,9 @@
 
 --------------------------------------
 
+## System Recommendation : Windows or Ubuntu with 1920*1080 resolution :)
+I have tested only on these parameters, although lower resolution is accounted for...
+
 ## Clone or download this project on your system and then follow along...
 
 ## INSTALLATION INSTRUCTIONS
