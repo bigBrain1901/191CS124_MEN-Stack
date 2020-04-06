@@ -63,11 +63,19 @@ I have tested only on these parameters, although lower resolution is accounted f
 
 1. __Setup project variables__
    1. Open my project folder in your favourite editor (vs-code, atom, etc..)
-   2. Locate the file ___query.js___ in root directory. Check the mysql parameters on lines 6-11 and enter your credentials as in step 4.v above.
+   1. Locate the file ___query.js___ in root directory. Check the mysql parameters on lines 6-11 and enter your credentials as in step 4.v above.
 
 1. You are all set! Open a terminal in the root directory of the project and run `node server.js` to run the server. You might want to change the listening port on line 21 of ___server.js___ to another free port on your computer. Default is 3000.
 
 1. On your browser (Chrome, etc..), goto `localhost:3000` to see a page. If it renders, well and good. Otherwise, go through the setup again. You could call me up or reach by WhatsApp, either way!
+
+1. If you see hell load of random errors saying "previlage" related "mysql" stuff, do the following..
+   1. Open a new terminal anywhere
+   1. Run the command `sudo mysql -u root -p` and enter your password.
+   1. Run the command `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '_yourPasswordHere_';
+   1. Run the command `exit`
+   1. Go back to the earlier terminal that you used for step 7 above.
+   1. Hit `ctrl+C` and rerun `sudo node server.js` and you should be up and running!
 
 -----------------------------------------
 
