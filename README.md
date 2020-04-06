@@ -48,6 +48,10 @@ I have tested only on these parameters, although lower resolution is accounted f
       1. Run `sudo apt install mysql-server` to install followed by `sudo mysql_secure_installation` to setup the root account on linux
    1. Run `mysql --version` to check if MySQL installed successfully. My instructions might be wierd to follow, but you can look-up the documentation on https://dev.mysql.com/doc/mysql-installation-excerpt/8.0/en/ for assistance.
    1. In projectFolder/Reference Docs, you will find an __exports.sql__ file, which is the database. Fetch its path __"path"__
+   1. On that terminal, run the following commands :
+      1. `mysql -u root -p` and then enter your password
+      1. `create database irisrec;`
+      1. `exit`
    1. On terminal, run `mysql -u root -p irisrec < "path/exports.sql"`. Enter the password you setup in step 4.i.b above. Remember to replace the path according to your system as fetched in step 4.iii above.
    1. This will setup my database on your system with following credentials
       1. user: "root"
