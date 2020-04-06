@@ -73,7 +73,7 @@ app.route("/add")
     if (loggedIn()) res.render("addItem", {
       type: "n",
       text: "",
-      user:user
+      user: user
     });
     else res.redirect("/");
   })
@@ -92,14 +92,15 @@ app.route("/add")
       query.makeInsertion("items", params, (result) => {
         if (result == 1) res.render("addItem", {
           type: "s",
-          text: "Your item has been added for auction!"
+          text: "Your item has been added for auction!",
+          user: user
         });
         else {
           fs.unlink(req.file.filename, (_) => {});
           res.render("addItem", {
             type: "f",
             text: "Invalid entry detected. Please check and re-enter details.",
-            user:user
+            user: user
           });
         }
       });
@@ -143,7 +144,7 @@ app.route("/dashboard")
           cardsToClaim: cardsToClaim,
           cardsUploaded: cardsUploaded,
           cardsMine: cardsMine,
-          user:user
+          user: user
         });
       }, 15);
     } else res.redirect("/");
@@ -247,26 +248,32 @@ function renderAuction(res) {
                 text: "Your bid has been registered. Check dashboard for info.",
                 cards1: array1,
                 cards2: array2,
-                user:user
+                user: user
               });
               else if (!flag && msg != "") res.render("auction", {
                 type: "f",
                 text: "Stop messing with the HTML!",
                 cards1: array1,
                 cards2: array2,
-                user:user
+                user: user
               });
               else res.render("auction", {
                 type: "n",
                 text: "",
                 cards1: array1,
                 cards2: array2,
-                user:user
+                user: user
               });
               flag = false;
               msg = "";
             });
-          }
+          } else res.render("auction", {
+            type: "n",
+            text: "",
+            cards1: [],
+            cards2: [],
+            user: user
+          });
         });
       });
     } else query.makeSelection("items", "deadline < DATE(NOW())", (response) => {
@@ -277,21 +284,21 @@ function renderAuction(res) {
             text: "Your bid has been registered. Check dashboard for info.",
             cards1: [],
             cards2: array2,
-            user:user
+            user: user
           });
           else if (!flag && msg != "") res.render("auction", {
             type: "f",
             text: "Noone has uploaded items yet. Be the first one!",
             cards1: [],
             cards2: array2,
-            user:user
+            user: user
           });
           else res.render("auction", {
             type: "f",
             text: "Noone has uploaded items yet. Be the first one!",
             cards1: [],
             cards2: array2,
-            user:user
+            user: user
           });
           flag = false;
           msg = "";
@@ -392,7 +399,7 @@ function prepareArrayUser(result, cb) {
     array.push(object);
   }
   console.log(array);
-  
+
   cb(array);
 }
 
