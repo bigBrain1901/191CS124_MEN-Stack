@@ -9,6 +9,8 @@
 
 --------------------------------------
 
+## Clone or download this project on your system and then follow along...
+
 ## INSTALLATION INSTRUCTIONS
 
 1. __Setup NODE and NPM__
