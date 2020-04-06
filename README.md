@@ -21,7 +21,7 @@ I have tested only on these parameters, although lower resolution is accounted f
    1. __Windows and Mac Users__ - Go to the following site - https://nodejs.org/en/ 
       Download the current latest stable release and run the installer.
 
-   1. __Linux Users__ - run `sudo apt-get nodejs npm` in terminal to install nodejs and npm directly.
+   1. __Linux Users__ - run `sudo apt-get install nodejs npm` in terminal to install nodejs and npm directly.
 
 1. __Copy the project files to a directory of your choice and navigate to the project directory.__
 
