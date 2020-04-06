@@ -17,6 +17,9 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+//port-on-system to listen on
+app.listen(3000);
+
 //app-variable
 var loginID = -1;
 var user = "";
@@ -185,9 +188,6 @@ app.get("/logout", function (_, res) {
   logout();
   res.redirect("/");
 });
-
-//port-on-system to listen on
-app.listen(3000);
 
 //---------------------------------------------------------------------------------------------
 //OTHER DEPENDENCY FUNCTIONS...

@@ -6,7 +6,7 @@ const md5 = require("md5");
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "27021973",
+    password: "password_here",
     database: "irisrec"
 });
 
