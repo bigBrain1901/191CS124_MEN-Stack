@@ -29,6 +29,8 @@ I have tested only on these parameters, although lower resolution is accounted f
    
    1. Open your preferred terminal (cmd, system terminal, hyper terminal, vscode terminal, etc) in that folder.
    
+   1. Run the command `npm init` on that terminal and just hit enter till the promt is ready again :)
+   
    1. run the command `npm i package` and replace __package__ with the __following one after the other__.
       1. express
       1. ejs
