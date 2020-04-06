@@ -1,7 +1,7 @@
 <%- include("header") %>
 <%- include("navbar",{page_num:2}) %>
 
-<div class="divtop3">
+<div class="divtop">
     <% if (type=="f") { %>
     <div class="banner banner-red" hidden><%= text %></div>
     <% } else if (type=="s") { %>
@@ -18,7 +18,7 @@
 </section>
 
 <section>
-<div class="dashboard-heading">SOLD OUT !</div>
+<div class="dashboard-heading gap">SOLD OUT !</div>
 <div class="dashboard-subheading">These items were sold out earlier! Check them out.</div>
 <div class="main-gallery" data-flickity='{ "freeScroll": true}' style="height: 700px;">
     <%- include("ItemCardsOld",{cards: cards2}) %>

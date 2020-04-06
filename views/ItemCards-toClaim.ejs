@@ -2,7 +2,7 @@
     <div class="item-card" id="<%= cards[index].id %>">
         <div class="item-card-heading"><%= cards[index].name %> </div>
         <div class="item-card-image" id="image-<%= cards[index].id %>"><img id="image-<%= cards[index].id %>"
-                src="<%= cards[index].image %>" alt="<%= cards[index].name %>"></div>
+                src="<%= cards[index].image %>" alt="<%= cards[index].name %>" class="item-card-picture"></div>
         <% if (cards[index].status == "N") { %>
             <button onclick="claim('<%= cards[index].id %>')" class="item-card-button-claim" id="button-<%= cards[index].id %>">
                 <i class="fa fa-check fa-1x"></i> CLAIM NOW

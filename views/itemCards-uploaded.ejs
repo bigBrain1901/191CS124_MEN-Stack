@@ -2,7 +2,7 @@
 <div class="item-card" id="<%= cards[index].id %>">
     <div class="item-card-heading"><%= cards[index].name %> </div>
     <div class="item-card-image" id="image-<%= cards[index].id %>"><img id="image-<%= cards[index].id %>"
-            src="<%= cards[index].image %>" alt="<%= cards[index].name %>"></div>
+            src="<%= cards[index].image %>" alt="<%= cards[index].name %>" class="item-card-picture"></div>
     <button class="item-card-button" id="button-<%= cards[index].id %>">
         <% if (cards[index].status == "N" && cards[index].currentBid > cards[index].startingBid) { %> CURRENTLY BIDDING
         <% } else if (cards[index].status == "N") { %> NO BIDS YET! <i onclick="remove('<%= cards[index].id %>')" class="fa fa-trash fa-1x left"></i>

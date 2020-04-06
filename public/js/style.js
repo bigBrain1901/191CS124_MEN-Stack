@@ -1,5 +1,4 @@
 jQueryBridget('flickity', Flickity, $);
-var bidArray = {};
 
 function animate() {
     $("body").fadeIn("slow");

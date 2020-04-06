@@ -1,12 +1,41 @@
 body {
-    font-family:'Calibri';
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+}
+
+.bg {
+    width: 100%;
+    height: 107%;
+    position: fixed;
+    z-index: -3;
+    top: -7%;
+    left: 0;
+}
+
+.opacity-8 {
+    opacity: 0.8;
+}
+
+.home-button {
+    position: absolute;
+    background-color: rgba(22, 83, 141, 0.7);
+    border: none;
+    border-radius: 1rem;
+    padding: 1%;
+    width: 18%;
+    top: 87%;
+    color: white;
+    text-decoration: none;
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    text-align: center;
+    margin-left: 40%;
+    font-size: 150%;
 }
 
 .navbar {
     margin-left: -10%;
     margin-top: -1%;
     width: 107.3%;
-    box-shadow: 0px 2px 20px 0px grey;
+    box-shadow: 0rem 0.125rem 1.25rem 0rem grey;
     background-color: rgb(250, 250, 250);
     padding: 1.5%;
     z-index: 2;
@@ -16,7 +45,7 @@ body {
     font-family: "Adobe Garamond Pro", Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
     text-align: center;
     margin-left: 10%;
-    font-size: 40px;
+    font-size: 2.5rem;
     font-weight: 600;
     padding-top: 0.7%;
 }
@@ -41,69 +70,66 @@ body {
 }
 
 .navbar-link {
-    color: rgb(127,127,127);
-    padding-left: 8px;
-    padding-right: 8px;
+    color: rgb(127, 127, 127);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     text-decoration: none;
-}
-
-.col3 {
-    margin-left: 10%;
-    align-content: center;
-    width: 80%;
 }
 
 .item-card-login {
     display: inline-block;
     position: absolute;
     background-color: rgb(250, 250, 250);
-    border: 2.5px solid rgb(46,117,182);
-    border-radius: 10px;
+    border: 0.156rem solid rgb(46, 117, 182);
+    border-radius: 0.625rem;
     padding: 2%;
     width: 13%;
     margin-left: 2%;
-    min-height: 500px;
+    min-height: 31.25rem;
 }
 
 .item-card {
     background-color: rgb(250, 250, 250);
-    border: 2.5px solid rgb(46,117,182);
-    border-radius: 10px;
+    border: 0.156rem solid rgb(46, 117, 182);
+    border-radius: 0.625rem;
     padding: 2% 2% 1% 2%;
     width: 15%;
     margin: 1%;
     display: inline-block;
 }
 
-.row:first-child {
-    margin-left: 11%;
-}
-
 .item-card-heading {
     font-weight: 500;
     font-size: 1.7rem;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     text-align: left;
-    padding-left: 5px;
+    padding-left: 0.313rem;
 }
 
 .item-card-image {
-    border: 2.5px solid rgb(46,117,182);
-    border-radius: 5px;
-    margin-bottom: -60px;
+    border: 0.2rem solid rgb(46, 117, 182);
+    border-radius: 0.313rem;
+    margin-bottom: -3.75rem;
     width: 100%;
-    max-height: 320px;
+    padding-top: 125%;
+    padding-left: -1%;
+    height: 0%;
     overflow: hidden;
-    border-radius: 30px;
+    border-radius: 1.875rem;
     display: inline-block;
 }
 
+.item-card-picture {
+    margin-top: -125%;
+    object-fit: contain;
+}
+
 .item-card-button {
-    border-radius: 40px;
-    background-color: rgb(46,117,182);
-    margin-bottom: 50px;
+    border-radius: 2.5rem;
+    background-color: rgb(46, 117, 182);
+    margin-bottom: 3.125rem;
     outline: none;
-    padding: 20px;
+    padding: 1.25rem;
     width: 101.5%;
     text-align: center;
     color: white;
@@ -119,8 +145,8 @@ body {
     font-weight: 500;
     font-size: xx-large;
     color: white;
-    margin-top: -100px;
-    margin-bottom: 50px;
+    margin-top: -6.25rem;
+    margin-bottom: 3.125rem;
     z-index: 2;
     border: none;
     background-color: transparent;
@@ -130,14 +156,10 @@ body {
 
 .item-card-text {
     text-align: justify;
-    margin-top: -50px;
-    padding: 5px;
+    margin-top: -3.125rem;
+    padding: 0.313rem;
     font-size: 130%;
     word-wrap: break-word;
-}
-
-.expanded-text {
-    min-height: 300px;
 }
 
 .item-card-link {
@@ -145,11 +167,12 @@ body {
     text-align: left;
     font-size: large;
     font-weight: 600;
-    color: rgb(46,117,182);
+    color: rgb(46, 117, 182);
     cursor: pointer;
 }
 
-.item-card-link:hover, .item-card-link:visited {
+.item-card-link:hover,
+.item-card-link:visited {
     color: rgb(22, 84, 141);
 }
 
@@ -158,67 +181,75 @@ body {
     text-align: left;
     font-size: large;
     font-weight: 600;
-    margin-top: -17px;
-    padding-left: 5px;
-    margin-bottom: 22px;
-    color: rgb(46,117,182);
+    margin-top: -1.063rem;
+    padding-left: 0.313rem;
+    margin-bottom: 1.375rem;
+    color: rgb(46, 117, 182);
+    cursor: pointer;
 }
 
-.item-card-link-back:hover, .item-card-link-back:visited {
+.item-card-link-back:hover,
+.item-card-link-back:visited {
     color: rgb(22, 84, 141);
 }
 
 .form-label {
     font-size: x-large;
-    padding-left: 5px;
+    padding-left: 0.313rem;
     font-weight: 500;
 }
 
 .form-text {
     font-size: large;
     font-weight: 100;
-    padding: 10px;
+    padding: 0.625rem;
     width: 95%;
-    border: 2px solid rgb(46,117,182);
-    border-radius: 8px;
+    border: 0.125rem solid rgb(46, 117, 182);
+    border-radius: 0.5rem;
     outline: none;
-    margin-top: 5px;
-    font-family:'Calibri';
+    margin-top: 0.313rem;
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
 }
 
 .form-textarea {
     font-size: large;
-    padding: 10px;
+    padding: 0.625rem;
     width: 95%;
-    border-radius: 20px;
-    border: 2px solid rgb(46,117,182);
+    border-radius: 1.25rem;
+    border: 0.125rem solid rgb(46, 117, 182);
     outline: none;
-    margin-top: 5px;
-    font-family:'Calibri';
+    margin-top: 0.313rem;
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
 }
 
-.form-text:hover, .form-text:active, .form-text:focus, .form-textarea:hover, .form-textarea:active, .form-textarea:focus {
-    border: 3px solid rgb(22, 84, 141);
-    padding: 9px;
+.form-text:hover,
+.form-text:active,
+.form-text:focus,
+.form-textarea:hover,
+.form-textarea:active,
+.form-textarea:focus {
+    border: 0.188rem solid rgb(22, 84, 141);
+    padding: 0.563rem;
     outline: none;
 }
 
 .form-button {
-    border-radius: 20px;
+    border-radius: 1.25rem;
     vertical-align: top;
-    background-color: rgb(46,117,182);
+    background-color: rgb(46, 117, 182);
     outline: none;
-    padding: 20px;
+    padding: 1.25rem;
     color: white;
     border: none;
     font-weight: 500;
     font-size: large;
     width: 102%;
-    margin-top: 15px;
+    margin-top: 0.938rem;
 }
 
-.form-button:hover, .form-button:active {
-    background-color:  rgb(22, 84, 141);
+.form-button:hover,
+.form-button:active {
+    background-color: rgb(22, 84, 141);
 }
 
 .form-control {
@@ -235,12 +266,6 @@ body {
     padding: 1%;
 }
 
-.divtop2 {
-    width: 100%;
-    height: 5%;
-    vertical-align: middle;
-}
-
 .col2 {
     display: inline-block;
     margin: 0% 28% 5% 28%;
@@ -249,23 +274,20 @@ body {
     padding-left: 2%;
     padding-top: 1%;
     padding-bottom: 1%;
-    min-height: 500px;
-}
-
-#button {
-    margin-top:50px;
+    min-height: 31.25rem;
 }
 
 i {
-    padding-right: 30px;
-    margin-left: -20px;
+    padding-right: 1.875rem;
+    margin-left: -1.25rem;
 }
 
 .red {
     background-color: rgb(241, 41, 41);
 }
 
-.red:hover, .red:active {
+.red:hover,
+.red:active {
     background-color: rgb(177, 26, 26);
 }
 
@@ -275,11 +297,11 @@ form {
 
 .login-form {
     background-color: rgb(250, 250, 250);
-    border: 2.5px solid rgb(46,117,182);
-    border-radius: 10px;
+    border: 0.156rem solid rgb(46, 117, 182);
+    border-radius: 0.625rem;
     padding: 3.5%;
     width: 17%;
-    margin: 1% 1% 1% 7%;
+    margin: 1% 1% 1% 9%;
     float: left;
 }
 
@@ -287,36 +309,27 @@ form {
     text-align: center;
     font-weight: 600;
     font-family: "Adobe Garamond Pro", Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
     font-size: xx-large;
 }
 
 .login-button {
     font-size: x-large;
     font-weight: 500;
-    padding: 12px;
+    padding: 0.75rem;
     width: 102%;
     background-color: rgb(56, 132, 202);
-    border: 2px solid rgb(56, 132, 202);
+    border: 0.125rem solid rgb(56, 132, 202);
     color: white;
-    border-radius: 15px;
+    border-radius: 0.938rem;
     outline: none;
-    margin-top: 30px;
+    margin-top: 1.875rem;
 }
 
-.login-button:hover, .login-button:active {
-    background-color:  rgb(22, 84, 141);
-    border: 2px solid rgb(22, 84, 141);
-}
-
-.signup-form {
-    background-color: rgb(250, 250, 250);
-    border: 2.5px solid rgb(46,117,182);
-    border-radius: 10px;
-    padding: 3.5% 2.5%;
-    width: 50%;
-    margin: 1% 7% 1% 1%;
-    float: right;
+.login-button:hover,
+.login-button:active {
+    background-color: rgb(22, 84, 141);
+    border: 0.125rem solid rgb(22, 84, 141);
 }
 
 .form-control-login {
@@ -324,6 +337,16 @@ form {
     display: inline-block;
     margin: 4.9% 2%;
     padding: 1%;
+}
+
+.signup-form {
+    background-color: rgb(250, 250, 250);
+    border: 0.156rem solid rgb(46, 117, 182);
+    border-radius: 0.625rem;
+    padding: 3.5% 2.5%;
+    width: 46%;
+    margin: 1% 7% 1% 1%;
+    float: right;
 }
 
 .form-control-signup {
@@ -336,45 +359,37 @@ form {
 .form-file {
     position: absolute;
     z-index: -1;
-    margin-top: 10px;
-    margin-left: 1px;
+    margin-top: 0.625rem;
+    margin-left: 0.063rem;
     font-size: 115%;
     opacity: 0;
-    padding: 1% 0px;
+    padding: 1% 0rem;
 }
 
 .signup-button {
     margin-left: 24.5%;
     font-size: x-large;
     font-weight: 500;
-    padding: 12px;
+    padding: 0.75rem;
     width: 51%;
     background-color: rgb(56, 132, 202);
-    border: 2px solid rgb(56, 132, 202);
+    border: 0.125rem solid rgb(56, 132, 202);
     color: white;
-    border-radius: 15px;
+    border-radius: 0.938rem;
     outline: none;
-    margin-top: 30px;
+    margin-top: 1.875rem;
 }
 
-.signup-button:hover, .signup-button:active {
-    background-color:  rgb(22, 84, 141);
-    border: 2px solid rgb(22, 84, 141);
+.signup-button:hover,
+.signup-button:active {
+    background-color: rgb(22, 84, 141);
+    border: 0.125rem solid rgb(22, 84, 141);
 }
 
 .divtop {
     width: 100%;
-    height: 110px;
+    height: 6.875rem;
     vertical-align: middle;
-}
-
-.borders {
-    display: inline-block;
-    padding-left: 2%;
-    margin-left: 2%;
-    padding-right: 0px;
-    margin-right: 0px;
-    border-left: 2px solid black;
 }
 
 .banner {
@@ -388,22 +403,12 @@ form {
 
 .banner-red {
     background-color: rgb(255, 209, 209);
-    border-bottom: 5px solid red;
+    border-bottom: 0.313rem solid red;
 }
 
 .banner-green {
     background-color: rgb(222, 253, 214);
-    border-bottom: 5px solid green;
-}
-
-.divtop3 {
-    width: 100%;
-    height: 80px;
-    vertical-align: middle;
-}
-
-.flickity-page-dots {
-    display: none;
+    border-bottom: 0.313rem solid green;
 }
 
 .align-left {
@@ -416,7 +421,7 @@ form {
 
 .button-bidding {
     position: relative;
-    height: 330px;
+    height: 20.625rem;
     opacity: 90%;
 }
 
@@ -424,47 +429,49 @@ form {
     outline: none;
     font-size: medium;
     font-weight: 100;
-    padding: 10px;
+    padding: 0.625rem;
     width: 93%;
-    border: 1px solid rgb(46,117,182);
-    border-radius: 8px;
-    margin-top: 5px;
+    border: 0.063rem solid rgb(46, 117, 182);
+    border-radius: 0.5rem;
+    margin-top: 0.313rem;
     font-family: "Calibri";
 
 }
 
-.item-form-text:hover, .item-form-text:active, .item-form-text:focus {
-    border: 2px solid rgb(22, 84, 141);
-    padding: 9px;
+.item-form-text:hover,
+.item-form-text:active,
+.item-form-text:focus {
+    border: 0.125rem solid rgb(22, 84, 141);
+    padding: 0.563rem;
     outline: none;
 }
 
 .item-form-button {
     font-size: large;
     font-weight: 500;
-    padding: 12px;
+    padding: 0.75rem;
     width: 102%;
     background-color: rgb(56, 132, 202);
-    border: 2px solid rgb(56, 132, 202);
+    border: 0.125rem solid rgb(56, 132, 202);
     color: white;
-    border-radius: 15px;
+    border-radius: 0.938rem;
     outline: none;
-    margin-top: 30px;
-    margin-bottom: 2px;
+    margin-top: 1.875rem;
+    margin-bottom: 0.125rem;
 }
 
 .item-form-label {
     font-size: large;
-    padding-left: 5px;
+    padding-left: 0.313rem;
     font-weight: 500;
 }
 
 .item-card-button-claim {
-    border-radius: 40px;
-    background-color: rgb(46,117,182);
-    margin-bottom: 50px;
+    border-radius: 2.5rem;
+    background-color: rgb(46, 117, 182);
+    margin-bottom: 3.125rem;
     outline: none;
-    padding: 20px;
+    padding: 1.25rem;
     width: 101.5%;
     text-align: center;
     color: white;
@@ -478,8 +485,8 @@ form {
     font-family: "Adobe Garamond Pro", Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
     text-align: center;
     font-size: 200%;
-    margin-top: 50px;
-    margin-bottom: 20px;
+    margin-top: 3.125rem;
+    margin-bottom: 1.25rem;
     font-weight: 600;
     padding-top: 0.6%;
 }
@@ -487,13 +494,14 @@ form {
 .dashboard-subheading {
     color: rgb(140, 140, 140);
     font-size: x-large;
-    margin-bottom: 50px;
+    margin-bottom: 3.125rem;
     text-decoration: none;
     text-align: center;
 }
 
 .main-gallery {
-    height: 700px;
+    height: 43.75rem;
+    margin-bottom: 6.25rem;
 }
 
 .left {
@@ -509,6 +517,10 @@ form {
     margin-bottom: 13.25%;
 }
 
+.flickity-page-dots {
+    display: none;
+}
+
 .dashboard-div {
     align-content: center;
     margin-top: -1%;
@@ -516,8 +528,8 @@ form {
 }
 
 .dashboard-button {
-    border-radius: 20px;
-    background-color: rgb(46,117,182);
+    border-radius: 1.25rem;
+    background-color: rgb(46, 117, 182);
     outline: none;
     padding: 0.8% 1% 1% 1%;
     color: white;
@@ -525,11 +537,65 @@ form {
     font-weight: 500;
     font-size: x-large;
     width: 10%;
-    margin-left: 45%;
+    margin-left: 44%;
     display: inline-block;
     text-align: center;
+    text-decoration: none;
 }
 
-.dashboard-button:hover, .dashboard-button:active {
-    background-color:  rgb(22, 84, 141);
+.dashboard-button:hover,
+.dashboard-button:active {
+    background-color: rgb(22, 84, 141);
+}
+
+@media only screen and (max-width: 1700px) {
+    .item-card {
+        width: 18%;
+    }
+
+    .item-card-image {
+        padding-top: 100%;
+    }
+
+    .item-card-picture {
+        margin-top: -130%;
+    }
+
+    .item-card-button {
+        font-size: small;
+    }
+
+    .item-card-button-logo {
+        font-size: x-large;
+    }
+
+    .item-card-text,
+    .item-card-link {
+        font-size: 110%;
+    }
+
+    .form-text,
+    .form-textarea,
+    .form-button,
+    .item-form-button {
+        font-size: medium;
+    }
+
+    .form-label {
+        font-size: large;
+    }
+
+    .item-form-button {
+        margin-top: 1rem;
+    }
+
+    .item-card-link-back {
+        margin-bottom: 0.675rem;
+    }
+
+    .dashboard-button {
+        width: 15%;
+        margin-left: 41.5%;
+    }
+
 }

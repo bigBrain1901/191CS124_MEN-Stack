@@ -45,8 +45,8 @@ const upload = multer({
 //SERVER ROUTING STARTS NOW...
 
 //function for home route - HomePage
-app.get("/", function (req,res) {
-  res.render ("index");
+app.get("/", function (_, res) {
+  res.render("index");
 });
 
 //function for login route - login Page
@@ -336,7 +336,7 @@ function prepareArrayOld(result, cb) {
       });
     });
   }
-  
+
 }
 
 function prepareArraySmall(result, cb) {
