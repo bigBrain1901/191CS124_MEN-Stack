@@ -18,9 +18,9 @@
 
    1. __Linux Users__ - run `sudo apt-get nodejs npm` in terminal to install nodejs and npm directly.
 
-1. __Copy the project files to a directory of your choice and navigate to the project directory.
+1. __Copy the project files to a directory of your choice and navigate to the project directory.__
 
-1. __Install required NPM packages
+1. __Install required NPM packages__
    
    1. Open your preferred terminal (cmd, system terminal, hyper terminal, vscode terminal, etc) in that folder.
    
