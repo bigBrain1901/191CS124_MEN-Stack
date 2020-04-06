@@ -60,11 +60,31 @@
 
 -----------------------------------------
 
-Features that can be added to the web app : 
+## Implemented Features
 
-    Server-wide encryption and .env can be implemented
-    Right now, my database stores encrypted passwords only with 1 round of hashing
-    
-    Small imporvements can always be added...
+1. User Dashboard - The user can view items where
+   1. His bid is highest
+   1. The dealine is over and he needs to claim the item
+   1. Items he has uploaded for auction.
+   
+1. Add Item Sheet - The user can upload a new item for auction on this page
+
+1. Auction Dashboard - A common space for bidding where all uploaded items within deadline are open for auction followed by an auction archive where past items and highest bidders are seen.
+
+1. A functional navbar and a landing page has been added and the UI is user friendly.
 
 -----------------------------------------
+
+## Non-essential planned features
+
+1. Server-wide encryption and .env can be implemented. As of now, my database stores encrypted passwords only with 1 round of hashing.
+
+1. Google signin could be added. But since this is an app for NITK only, it wouldn't make sense if not for additional security tests, which I had no time for.
+
+-----------------------------------------
+
+## Known bugs
+
+1. Server side mimetype check for files is limited to .jpg, .jpeg, .png only, although user should technically be able to upload other valid image files.
+
+----------------------------------------
