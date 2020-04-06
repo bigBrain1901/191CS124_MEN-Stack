@@ -93,11 +93,7 @@ app.route("/add")
         if (result == 1) res.render("addItem", {
           type: "s",
           text: "Your item has been added for auction!",
-<<<<<<< HEAD
           user: user
-=======
-          user:user
->>>>>>> 534753abecf9693515cb8892f738369967b0a092
         });
         else {
           fs.unlink(req.file.filename, (_) => {});
