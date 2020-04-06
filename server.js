@@ -92,7 +92,8 @@ app.route("/add")
       query.makeInsertion("items", params, (result) => {
         if (result == 1) res.render("addItem", {
           type: "s",
-          text: "Your item has been added for auction!"
+          text: "Your item has been added for auction!",
+          user:user
         });
         else {
           fs.unlink(req.file.filename, (_) => {});
