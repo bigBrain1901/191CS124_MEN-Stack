@@ -154,10 +154,11 @@ body {
     width: 100%;
     padding-top: 125%;
     padding-left: -1%;
-    height: 0%;
     overflow: hidden;
     border-radius: 1.875rem;
     display: inline-block;
+    
+    max-height: 1rem;
 }
 
 .item-card-picture {

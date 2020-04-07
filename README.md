@@ -79,6 +79,26 @@ I have tested only on these parameters, although lower resolution is accounted f
 
 -----------------------------------------
 
+## Current Database Structure
+
+1. The Users on my database have followin _id-pwd_ credentials
+   1. 1-1234
+   1. 2-1234
+   1. 3-1234
+
+1. You shouldn't face any database issues if you import my database as explained in steps above.
+
+1. This database set (in my project folder) represents diversely, all cases of items regarding deadline, costs, bidding, etc.. Feel free to explore!
+
+1. Please check images under Reference Docs > MySQL Verification to verify your database, incase of errors. To do so, run the following commands in a new terminal.
+   1. `mysql -u root -p` then enter your password
+   1. `use irisrec`
+   1. `show tables;` - you should see 2 entries
+   1. `desc users;` - check if your terminal output matches with the screenshots I provided
+   1. `desc items;` - check if your terminal output matches with the screenshots I provided
+
+-----------------------------------------
+
 ## Implemented Features
 
 1. User Dashboard - The user can view items where
@@ -105,5 +125,9 @@ I have tested only on these parameters, although lower resolution is accounted f
 ## Known bugs
 
 1. Server side mimetype check for files is limited to .jpg, .jpeg, .png only, although user should technically be able to upload other valid image files.
+
+1. Please ignore the error `Cannot set headers after they are sent to the client`. I am unaware of why it happens, and would love to know!
+
+1. ___The calendar while setting deadline for auction on item accepts past values. But I left it like that only as it is easier for you and me to test myweb-app for old items. So not a bug!___
 
 ----------------------------------------

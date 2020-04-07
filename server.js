@@ -386,20 +386,17 @@ function prepareArrayUser(result, cb) {
       id: result[i].id,
       name: result[i].name,
       image: "uploads/" + result[i].image,
+      startingBid: result[i].starting_bid,
       currentBid: (result[i].current_bid == 0) ? result[i].starting_bid : result[i].current_bid,
       status: result[i].status,
       highestBidder: "",
-      deadline: result[i].deadline,
-      stratingBid: result[i].starting_bid
+      deadline: result[i].deadline
     };
     if (result[i].status == "Y") getHighestBidder(result[i].highest_bidder, (name) => {
       object.highestBidder = name;
     });
-
     array.push(object);
   }
-  console.log(array);
-
   cb(array);
 }
 
@@ -411,7 +408,6 @@ function getHighestBidder(highest_bidder, cb) {
 
 function getCreator(creatorID, cb) {
   query.makeSelection("users", "id = " + creatorID, (res) => {
-    console.log(creatorID);
     cb(res[0].name);
   });
 }

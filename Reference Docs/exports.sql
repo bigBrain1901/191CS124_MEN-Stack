@@ -37,7 +37,7 @@ CREATE TABLE `items` (
   PRIMARY KEY (`id`),
   KEY `highest_bidder` (`highest_bidder`),
   CONSTRAINT `items_ibfk_1` FOREIGN KEY (`highest_bidder`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (46,101,'Item 1','qwerty',123,'2020-04-30',0,'image-1586203396208.jpg',0,101,'N'),(47,101,'Item 1','qwerty',12345,'2020-04-16',0,'image-1586203772522.jpg',0,101,'N'),(48,101,'Item 1','qwerty',12345,'2020-04-01',0,'image-1586204280226.jpg',0,101,'N');
+INSERT INTO `items` VALUES (49,102,'A Computer','Hey, this is the best deal you will get for 8GB ram and 250GB SSD! It is 2 years old...',50000,'2020-04-23',0,'image-1586231020044.png',60001,104,'N'),(50,102,'Bananas','These bananas are top of the class, legendary stuff! You will love these like minions!',50,'2020-04-01',0,'image-1586231112313.jpg',60,103,'Y'),(51,104,'Ludo Board','Are you tired of seeing Insta stories about Ludo. Get one for yourself, now!!!',50,'2020-04-08',0,'image-1586231201440.jfif',0,102,'N'),(52,103,'Old Apple','This apple is a 50 year old heritage and calls you to buy it. Hurry or you\'ll miss it!!',60,'2020-04-03',0,'image-1586231295210.jpg',61,102,'N');
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,7 +66,7 @@ CREATE TABLE `users` (
   `pno` bigint NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `rno` (`rno`)
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +75,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (101,'1','Ishaan Singh','2020-04-06 20:02:06','81dc9bdb52d04dc20036dbd8313ed055',1234);
+INSERT INTO `users` VALUES (102,'1','Ishaan Singh','2020-04-07 03:38:40','81dc9bdb52d04dc20036dbd8313ed055',9739492999),(103,'2','Aditya Shukla','2020-04-07 03:39:30','81dc9bdb52d04dc20036dbd8313ed055',9876543210),(104,'3','Rahul Dua','2020-04-07 03:40:12','81dc9bdb52d04dc20036dbd8313ed055',8876655321);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -88,4 +88,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-07  1:48:58
+-- Dump completed on 2020-04-07 10:01:39

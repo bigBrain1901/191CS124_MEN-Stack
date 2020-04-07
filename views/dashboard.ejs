@@ -1,17 +1,6 @@
 <%- include("header") %> 
 <%- include("navbar",{page_num:3, user:user}) %>
 
-<div class="dashboard-heading">YOUR TERRITORY !</div>
-<div class="dashboard-subheading">You are the highest bidder on these items!</div>
-
-    <% if (cardsMine.length == 0) { %>
-        <div class="divtop shift"><div class="banner banner-red" hidden>Oops! There is nothing to display here. <a href="/auction">Bid NOW!</a></div></div>
-    <% } else { %>
-        <div class="main-gallery" data-flickity='{ "freeScroll": true }'>
-            <%- include("ItemCards",{cards: cardsMine}) %> 
-        </div>
-    <% } %> 
-    
 <div class="dashboard-heading">CLAIM YOUR ITEMS !</div>
 <div class="dashboard-subheading">The deadlines for the following items are met, and you are the highest bidder!</div>
 
@@ -23,7 +12,18 @@
         </div>
     <% } %> 
 
-<div class="dashboard-heading">YOUR ITEMS ON AUCTION !</div>
+<div class="dashboard-heading special-div">YOUR TERRITORY !</div>
+<div class="dashboard-subheading">You are the highest bidder on these items!</div>
+
+    <% if (cardsMine.length == 0) { %>
+        <div class="divtop shift"><div class="banner banner-red" hidden>Oops! There is nothing to display here. <a href="/auction">Bid NOW!</a></div></div>
+    <% } else { %>
+        <div class="main-gallery" data-flickity='{ "freeScroll": true }'>
+            <%- include("ItemCards",{cards: cardsMine}) %> 
+        </div>
+    <% } %> 
+
+<div class="dashboard-heading"><br><br><br>YOUR ITEMS ON AUCTION !</div>
 <div class="dashboard-subheading">These are your items. Spread the word!</div>
     <% if (cardsUploaded.length == 0) { %>
         <div class="dashboard-div">
